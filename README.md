@@ -3,12 +3,9 @@ Liferay robotic deployment est un outil pour robotiser la création de divers co
 
 # Getting started
 
-## 1. Usefull commands
+## Usefull commands
 
-### Install
-
-
-### Start
+### 1. Start Liferay Environnement
 
 ```bash
 ./start-environment.sh
@@ -32,3 +29,31 @@ Liferay runs on http://localhost:8080/
 1. Liferay
 > username : `test`
 > password : `admin`
+
+### 2. Start playwright (After Liferay completly started)
+
+##  Autoriser Docker à afficher l'UI 
+```bash
+xhost +local:
+```
+## Lancer le conteneur
+Lancer playwright en mode interactif : 
+```bash
+./start-playwright.sh
+```
+
+## Enregistrer un scénario
+Enregistrer un scénario Liferay (codegen) :
+```bash
+npx playwright codegen http://rd-liferay:8080
+```
+
+## Exporter le scénario
+Copier le code généré dans tests/*.spec.ts
+
+## Rejouer sur un environnement
+```bash
+npx playwright test
+```
+
+
