@@ -53,6 +53,7 @@ Copier le code généré dans tests/*.spec.ts
 
 ## Rejouer sur un environnement
 ```bash
+npm install
 npx playwright test
 ```
 
