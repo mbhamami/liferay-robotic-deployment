@@ -13,6 +13,7 @@ test('test', async ({ page }) => {
   await page.getByRole('menuitem', { name: 'Sites' }).click();
   await page.getByRole('link', { name: 'Add Site' }).click();
   await page.getByRole('button', { name: 'Select Template: Blank Site' }).click();
+  await page.locator('iframe[title="Add Site"]').contentFrame().getByRole('textbox', { name: 'Name Required' }).click();
   await page.locator('iframe[title="Add Site"]').contentFrame().getByRole('textbox', { name: 'Name Required' }).fill('Liferay Robotic');
   await page.locator('iframe[title="Add Site"]').contentFrame().getByRole('button', { name: 'Add' }).click();
   await page.getByRole('tab', { name: 'Open Product Menu' }).click();
@@ -23,5 +24,13 @@ test('test', async ({ page }) => {
   await page.locator('iframe[title="Add Page"]').contentFrame().getByRole('textbox', { name: 'Name Required' }).click();
   await page.locator('iframe[title="Add Page"]').contentFrame().getByRole('textbox', { name: 'Name Required' }).fill('Accueil');
   await page.locator('iframe[title="Add Page"]').contentFrame().getByRole('button', { name: 'Add' }).click();
+  const source = page.locator('div').filter({ hasText: /^HTML$/ }).first() // élément à dragger
+  const target = page.locator('div').filter({ hasText: /^Drag and drop fragments or widgets here\.$/ }).nth(5);//ZOne de drop
+  await source.dragTo(target);
+  await page.getByText('HTML Example').dblclick();
+  await page.locator('pre').nth(1).click();
+  await page.locator('textarea').press('ControlOrMeta+a');
+  await page.locator('textarea').fill('<h1>Contenu créé à partir de Playwright</h1>');
+  await page.getByRole('button', { name: 'Save' }).click();
   await page.getByRole('button', { name: 'Publish' }).click();
 });
