@@ -2,7 +2,7 @@
 
 ## 📌 Description du besoin
 
-Le projet consiste à **enregistrer des scénarios utilisateurs sur une application web** (ex. Liferay DXP) puis à **rejouer automatiquement ces scénarios sur plusieurs environnements identiques** (DEV, INT, REC, PROD-like), ou sur d'autres sites.
+Le projet consiste à **enregistrer des scénarios utilisateurs sur une application web** (Liferay DXP dans notre cas) puis à **rejouer automatiquement ces scénarios sur plusieurs environnements identiques** (DEV, INT, REC, PROD), ou sur d'autres sites d'un même environnement.
 
 Un scénario correspond à une suite d’actions réalisées dans le navigateur :
 - Navigation entre pages
